@@ -7,6 +7,7 @@ if (result.error) {
 }
 
 import * as express from "express";
+import { logger } from "./logger";
 import { root } from "./routes/root";
 import { isIntiger } from "./utils";
 
@@ -33,7 +34,7 @@ function startServer() {
     port = 9000;
   }
   app.listen(port, () => {
-    console.log(`HTTP Server is now running at http://localhost:${port}/`);
+    logger.info(`HTTP Server is now running at http://localhost:${port}/`);
   });
 }
 
