@@ -10,6 +10,7 @@ import * as express from "express";
 import { logger } from "./logger";
 import { root } from "./routes/root";
 import { isIntiger } from "./utils";
+import { AppDataSource } from "./data-source";
 
 const app = express();
 
@@ -38,5 +39,13 @@ function startServer() {
   });
 }
 
-setupExpress();
-startServer();
+AppDataSource.initialize()
+  .then(() => {
+    logger.info(`The datasource has been initialized successfully.`);
+    setupExpress();
+    startServer();
+  })
+  .catch((error) => {
+    logger.error(`Error during datasourcr initialization.`, error);
+    process.exit(1);
+  });
