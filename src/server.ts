@@ -1,5 +1,14 @@
+import * as dotenv from "dotenv";
+
+const result = dotenv.config();
+if (result.error) {
+  console.log(`Error loading environment variables, aborting.`);
+  process.exit(1);
+}
+
 import * as express from "express";
 import { root } from "./routes/root";
+import { isIntiger } from "./utils";
 
 const app = express();
 
@@ -8,8 +17,23 @@ function setupExpress() {
 }
 
 function startServer() {
-  app.listen(9000, () => {
-    console.log("HTTP Server is now running at http://localhost:9000/");
+  let port: number;
+  const portEnv = process.env.PORT;
+  const portArg = process.argv[2];
+
+  if (isIntiger(portEnv)) {
+    port = parseInt(portEnv);
+  }
+
+  if (!port && isIntiger(portArg)) {
+    port = parseInt(portArg);
+  }
+
+  if (!port) {
+    port = 9000;
+  }
+  app.listen(port, () => {
+    console.log(`HTTP Server is now running at http://localhost:${port}/`);
   });
 }
 
