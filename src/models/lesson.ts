@@ -2,30 +2,27 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToMany,
+  ManyToMany,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { Lesson } from "./lesson";
+import { Course } from "./course";
 
 @Entity({
-  name: "COURSES",
+  name: "LESSONS",
 })
-export class Course {
+export class Lesson {
   @PrimaryGeneratedColumn()
   id: number;
   @Column()
-  seqNo: number;
-  @Column()
   title: string;
   @Column()
-  iconUrl: string;
+  duration: string;
   @Column()
-  longDescription: string;
-  @Column()
-  categoty: string;
-  @OneToMany(() => Lesson, (lesson) => lesson.course)
-  lessons: Lesson[];
+  seqNo: number;
+  @ManyToOne(() => Course, (course) => course.lessons)
+  course: Course;
   @CreateDateColumn()
   createdAt: Date;
   @UpdateDateColumn()
