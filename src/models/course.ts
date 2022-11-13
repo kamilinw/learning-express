@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
 
 @Entity({
   name: "COURSES",
@@ -6,9 +12,18 @@ import { Entity, PrimaryGeneratedColumn } from "typeorm";
 export class Course {
   @PrimaryGeneratedColumn()
   id: number;
+  @Column()
   seqNo: number;
+  @Column()
   title: string;
+  @Column()
   iconUrl: string;
+  @Column()
   longDescription: string;
+  @Column()
   categoty: string;
+  @CreateDateColumn()
+  createdAt: Date;
+  @UpdateDateColumn()
+  lastUpdatedAt: Date;
 }
