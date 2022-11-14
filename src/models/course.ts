@@ -14,20 +14,28 @@ import { Lesson } from "./lesson";
 export class Course {
   @PrimaryGeneratedColumn()
   id: number;
+
   @Column()
   seqNo: number;
+
   @Column()
   title: string;
+
   @Column()
   iconUrl: string;
+
   @Column()
   longDescription: string;
+
   @Column()
-  categoty: string;
+  category: string;
+
   @OneToMany(() => Lesson, (lesson) => lesson.course)
   lessons: Lesson[];
+
   @CreateDateColumn()
   createdAt: Date;
+
   @UpdateDateColumn()
   lastUpdatedAt: Date;
 }

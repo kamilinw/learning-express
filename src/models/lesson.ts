@@ -2,6 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -15,16 +16,25 @@ import { Course } from "./course";
 export class Lesson {
   @PrimaryGeneratedColumn()
   id: number;
+
   @Column()
   title: string;
+
   @Column()
   duration: string;
+
   @Column()
   seqNo: number;
+
   @ManyToOne(() => Course, (course) => course.lessons)
+  @JoinColumn({
+    name: "courseId",
+  })
   course: Course;
+
   @CreateDateColumn()
   createdAt: Date;
+
   @UpdateDateColumn()
   lastUpdatedAt: Date;
 }

@@ -6,6 +6,7 @@ if (result.error) {
   process.exit(1);
 }
 
+import "reflect-metadata";
 import * as express from "express";
 import { logger } from "./logger";
 import { root } from "./routes/root";
@@ -46,6 +47,6 @@ AppDataSource.initialize()
     startServer();
   })
   .catch((error) => {
-    logger.error(`Error during datasourcr initialization.`, error);
+    logger.error(`Error during datasource initialization.`, error);
     process.exit(1);
   });
