@@ -14,6 +14,7 @@ import { isIntiger } from "./utils";
 import { AppDataSource } from "./data-source";
 import { getAllCourses } from "./routes/get-all-courses";
 import { defaultErrorHandler } from "./middlewares/DefaultErrorHandler";
+import { findCourseByUrl } from "./routes/FindCourseByUrl";
 
 const cors = require("cors");
 
@@ -25,6 +26,8 @@ function setupExpress() {
   app.route("/").get(root);
 
   app.route("/api/courses").get(getAllCourses);
+
+  app.route("/api/courses/:courseUrl").get(findCourseByUrl);
 
   app.use(defaultErrorHandler);
 }
