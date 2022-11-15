@@ -16,9 +16,11 @@ export function defaultErrorHandler(
     return next(error);
   }
 
-  response.status(500).json({
-    status: "error",
-    code: 500,
-    message: "Default error handling triggered, check logs.",
+  response.status(error.code || 500).json({
+    timestamp: new Date().toUTCString(),
+    error: error.error || "Internal Server Error",
+    status: error.status || 500,
+    message: error.message || "Default error handling triggered, check logs.",
+    path: request.path,
   });
 }
