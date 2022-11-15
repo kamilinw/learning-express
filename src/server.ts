@@ -12,11 +12,14 @@ import { logger } from "./logger";
 import { root } from "./routes/root";
 import { isIntiger } from "./utils";
 import { AppDataSource } from "./data-source";
+import { getAllCourses } from "./routes/get-all-courses";
 
 const app = express();
 
 function setupExpress() {
   app.route("/").get(root);
+
+  app.route("/api/courses").get(getAllCourses);
 }
 
 function startServer() {
