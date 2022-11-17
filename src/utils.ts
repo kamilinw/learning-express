@@ -1,3 +1,3 @@
-export function isIntiger(input: string) {
+export function isInteger(input: string) {
   return input?.match(/^\d+$/) ?? false;
 }

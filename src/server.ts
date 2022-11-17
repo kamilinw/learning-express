@@ -10,11 +10,12 @@ import "reflect-metadata";
 import * as express from "express";
 import { logger } from "./logger";
 import { root } from "./routes/root";
-import { isIntiger } from "./utils";
+import { isInteger } from "./utils";
 import { AppDataSource } from "./data-source";
 import { getAllCourses } from "./routes/get-all-courses";
 import { defaultErrorHandler } from "./middlewares/DefaultErrorHandler";
 import { findCourseByUrl } from "./routes/FindCourseByUrl";
+import { findLessonsByCourse } from "./routes/FindLessonsByCourse";
 
 const cors = require("cors");
 
@@ -29,6 +30,8 @@ function setupExpress() {
 
   app.route("/api/courses/:courseUrl").get(findCourseByUrl);
 
+  app.route("/api/courses/:courseId/lessons").get(findLessonsByCourse);
+
   app.use(defaultErrorHandler);
 }
 
@@ -37,11 +40,11 @@ function startServer() {
   const portEnv = process.env.PORT;
   const portArg = process.argv[2];
 
-  if (isIntiger(portEnv)) {
+  if (isInteger(portEnv)) {
     port = parseInt(portEnv);
   }
 
-  if (!port && isIntiger(portArg)) {
+  if (!port && isInteger(portArg)) {
     port = parseInt(portArg);
   }
 
