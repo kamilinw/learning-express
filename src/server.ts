@@ -12,6 +12,7 @@ import { logger } from "./Logger";
 import { root } from "./routes/Root";
 import { isInteger } from "./Utils";
 import { AppDataSource } from "./DataSource";
+import { deleteCourseAndLessons } from "./routes/DeleteCourse";
 import { getAllCourses } from "./routes/GetAllCourses";
 import { defaultErrorHandler } from "./middlewares/DefaultErrorHandler";
 import { findCourseByUrl } from "./routes/FindCourseByUrl";
@@ -32,6 +33,8 @@ function setupExpress() {
   app.route("/").get(root);
 
   app.route("/api/courses").get(getAllCourses);
+
+  app.route("/api/courses/:courseId").delete(deleteCourseAndLessons);
 
   app.route("/api/courses/:courseUrl").get(findCourseByUrl);
 
