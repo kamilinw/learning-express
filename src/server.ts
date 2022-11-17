@@ -17,6 +17,7 @@ import { defaultErrorHandler } from "./middlewares/DefaultErrorHandler";
 import { findCourseByUrl } from "./routes/FindCourseByUrl";
 import { findLessonsByCourse } from "./routes/FindLessonsByCourse";
 import { updateCourse } from "./routes/UpdateCourse";
+import { createCourse } from "./routes/CreateCourse";
 
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -37,6 +38,8 @@ function setupExpress() {
   app.route("/api/courses/:courseId/lessons").get(findLessonsByCourse);
 
   app.route("/api/courses/:courseId").patch(updateCourse);
+
+  app.route("/api/courses").post(createCourse);
 
   app.use(defaultErrorHandler);
 }
