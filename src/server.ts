@@ -8,11 +8,11 @@ if (result.error) {
 
 import "reflect-metadata";
 import * as express from "express";
-import { logger } from "./logger";
-import { root } from "./routes/root";
-import { isInteger } from "./utils";
-import { AppDataSource } from "./data-source";
-import { getAllCourses } from "./routes/get-all-courses";
+import { logger } from "./Logger";
+import { root } from "./routes/Root";
+import { isInteger } from "./Utils";
+import { AppDataSource } from "./DataSource";
+import { getAllCourses } from "./routes/GetAllCourses";
 import { defaultErrorHandler } from "./middlewares/DefaultErrorHandler";
 import { findCourseByUrl } from "./routes/FindCourseByUrl";
 import { findLessonsByCourse } from "./routes/FindLessonsByCourse";

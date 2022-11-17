@@ -3,9 +3,9 @@ import * as dotenv from "dotenv";
 const result = dotenv.config();
 
 import "reflect-metadata";
-import { AppDataSource } from "../data-source";
-import { Lesson } from "./lesson";
-import { Course } from "./course";
+import { AppDataSource } from "../DataSource";
+import { Lesson } from "./Lesson";
+import { Course } from "./Course";
 
 async function deleteDb() {
   await AppDataSource.initialize();

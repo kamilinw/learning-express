@@ -8,7 +8,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { Course } from "./course";
+import { Course } from "./Course";
 
 @Entity({
   name: "LESSONS",

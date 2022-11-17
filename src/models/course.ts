@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { Lesson } from "./lesson";
+import { Lesson } from "./Lesson";
 
 @Entity({
   name: "COURSES",

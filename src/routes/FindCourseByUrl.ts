@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
-import { AppDataSource } from "../data-source";
-import { Course } from "../models/course";
-import { logger } from "../logger";
-import { Lesson } from "../models/lesson";
+import { AppDataSource } from "../DataSource";
+import { Course } from "../models/Course";
+import { logger } from "../Logger";
+import { Lesson } from "../models/Lesson";
 
 export async function findCourseByUrl(
   request: Request,
