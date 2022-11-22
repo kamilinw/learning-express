@@ -6,6 +6,7 @@ import "reflect-metadata";
 import { AppDataSource } from "../DataSource";
 import { Lesson } from "./Lesson";
 import { Course } from "./Course";
+import { User } from "./User";
 
 async function deleteDb() {
   await AppDataSource.initialize();
@@ -19,6 +20,10 @@ async function deleteDb() {
   console.log(`Clearing COURSES table.`);
 
   await AppDataSource.getRepository(Course).delete({});
+
+  console.log(`Clearing USERS table.`);
+
+  await AppDataSource.getRepository(User).delete({});
 }
 
 deleteDb()

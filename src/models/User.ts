@@ -18,7 +18,10 @@ export class User {
   email: string;
 
   @Column()
-  password: string;
+  passwordHash: string;
+
+  @Column()
+  passwordSalt: string;
 
   @Column()
   pictureUrl: string;
