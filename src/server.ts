@@ -19,6 +19,7 @@ import { findCourseByUrl } from "./routes/FindCourseByUrl";
 import { findLessonsByCourse } from "./routes/FindLessonsByCourse";
 import { updateCourse } from "./routes/UpdateCourse";
 import { createCourse } from "./routes/CreateCourse";
+import { createUser } from "./routes/CreateUser";
 
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -27,22 +28,17 @@ const app = express();
 
 function setupExpress() {
   app.use(cors({ origin: true }));
-
   app.use(bodyParser.json());
 
   app.route("/").get(root);
-
   app.route("/api/courses").get(getAllCourses);
-
   app.route("/api/courses/:courseId").delete(deleteCourseAndLessons);
-
   app.route("/api/courses/:courseUrl").get(findCourseByUrl);
-
   app.route("/api/courses/:courseId/lessons").get(findLessonsByCourse);
-
   app.route("/api/courses/:courseId").patch(updateCourse);
-
   app.route("/api/courses").post(createCourse);
+
+  app.route("/api/user").post(createUser);
 
   app.use(defaultErrorHandler);
 }
