@@ -10,7 +10,7 @@ export function isInteger(input: string) {
 export async function calculatePasswordHash(
   plainTextPassword: string,
   passwordSalt: string
-) {
+): Promise<string> {
   const passwordHash = await hashPassword(
     plainTextPassword,
     passwordSalt,
