@@ -66,7 +66,7 @@ export async function login(
         pictureUrl,
         isAdmin,
       },
-      authJwtToken,
+      authJwtToken: "Bearer " + authJwtToken,
     });
   } catch (error) {
     logger.error(`Error handling login()`);

@@ -11,7 +11,7 @@ export async function checkIfAuthenticated(
 ) {
   try {
     logger.debug(`Called checkIfAuthenticated()`);
-    const authJwtToken = request.headers.authorization;
+    const authJwtToken = request.headers.authorization.replace("Bearer ", "");
 
     if (!authJwtToken) {
       throw {
